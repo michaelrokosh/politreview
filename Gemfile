@@ -39,7 +39,7 @@ gem "less-rails"
 gem "therubyracer"
 gem 'font-awesome-rails'
 gem 'will_paginate'
-
+gem "geocoder"
 
 group :production do
   gem 'rails_12factor'

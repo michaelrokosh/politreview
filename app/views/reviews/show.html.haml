@@ -4,5 +4,5 @@
   - @review.comments.each do |comment|
     = comment.user.username
     = comment.content
-  = request.remote_ip
-  = @country.country_name
+  = request.ip
+  = request.location.country

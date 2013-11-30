@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
     #@comment_review = Review.find_by_id(params[:review_id])
     @news = News.find_by_id(params[:news_id])
     @remote_ip = request.env["HTTP_X_FORWARDED_FOR"]
-    @country = GeoIP.new('lib/GeoIP.dat').country(request.remote_ip) 
+    #@country = GeoIP.new('lib/GeoIP.dat').country(request.remote_ip) 
     @comment = Comment.new
   end
 
