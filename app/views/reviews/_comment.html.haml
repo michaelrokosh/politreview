@@ -1,0 +1,11 @@
+= form_for ([@news, @review, @comment]) do |f|
+  %p
+    = f.hidden_field :news_id, :value => @news.id
+    = f.hidden_field :review_id, :value => @review.id
+    = f.hidden_field :user_id, :value => current_user.id
+    = f.text_area :content, class: 'form-control', rows: 10
+
+  %p
+    = f.submit "Готово", class: 'btn btn-default'
+
+= debug @review

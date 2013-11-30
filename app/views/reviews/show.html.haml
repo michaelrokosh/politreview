@@ -1,0 +1,7 @@
+= @review.content
+= render 'comment'
+.comments
+  - @review.comments.each do |comment|
+    = comment.user.username
+    = comment.content
+  = request.remote_ip
