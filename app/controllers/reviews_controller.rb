@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @news = News.find_by_id(params[:news_id])
     if @review.save
-      redirect_to news_review_path(@news, @review)
+      redirect_to news_path(@news)
     else
       render 'new'
     end

@@ -1,4 +1,13 @@
 %h1  
   = @news.title
 = @news.content
+- @news.reviews.each do |review|
+  .review
+    %h2
+      = review.user.username
+      = '(' + request.location.country + ')'
+    = review.content
+    = link_to "Обсуждение (#{review.comments.count})", news_review_path(@news, review)
+%h1
+  Написать рецензию
 = render 'review'

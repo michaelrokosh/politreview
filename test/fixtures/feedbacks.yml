@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyText
+  user_id: 1
+  politic_id: 1
+  feedbacks_rate: 9.99
+  users_rate: 9.99
+
+two:
+  content: MyText
+  user_id: 1
+  politic_id: 1
+  feedbacks_rate: 9.99
+  users_rate: 9.99

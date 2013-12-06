@@ -1,8 +1,16 @@
+%h1
+  Рецензия № 
+  = @review.id
+  на новость
+  = link_to @news.title, news_path(@news)
 = @review.content
-= render 'comment'
 .comments
+  %h3
+    Комментарии:
   - @review.comments.each do |comment|
-    = comment.user.username
+    %h3
+      = comment.user.username
+      = request.location.country
     = comment.content
-  = request.ip
-  = request.location.country
+
+= render 'comment'
