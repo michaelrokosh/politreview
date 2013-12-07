@@ -20,4 +20,7 @@
         = link_to "Обсуждение (#{review.comments.count})", news_review_path(@news, review)
 %h1
   Написать рецензию
-= render 'review'
+- if user_signed_in?
+  = render 'review'
+- else
+  Для написания рецензии необходимо зарегистрироваться
