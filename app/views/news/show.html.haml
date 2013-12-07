@@ -5,19 +5,33 @@
   - if review.review_type == 'positive'
     .green
       .review
-        %h2
-          = review.user.username
-          = '(' + request.location.country + ')'
-        = review.content
-        = link_to "Обсуждение (#{review.comments.count})", news_review_path(@news, review)
+        .review-header
+          .username
+            %h4
+              = review.user.username
+              = '(' + request.location.country + ')'
+          .date
+            %h4
+              = review.created_at.to_s(:ru_datetime)
+        .review-content
+          = review.content
+        .review-footer
+          = link_to "Обсуждение (#{review.comments.count})", news_review_path(@news, review)
   - else
     .red
       .review
-        %h2
-          = review.user.username
-          = '(' + request.location.country + ')'
-        = review.content
-        = link_to "Обсуждение (#{review.comments.count})", news_review_path(@news, review)
+        .review-header
+          .username
+            %h4
+              = review.user.username
+              = '(' + request.location.country + ')'
+          .date
+            %h4
+              = review.created_at.to_s(:ru_datetime)
+        .review-content
+          = review.content
+        .review-footer
+          = link_to "Обсуждение (#{review.comments.count})", news_review_path(@news, review)
 %h1
   Написать рецензию
 - if user_signed_in?

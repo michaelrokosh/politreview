@@ -12,5 +12,8 @@
       = comment.user.username
       = request.location.country
     = comment.content
+- if user_signed_in?
+  = render 'comment'
+- else
+  Для оставления комментариев необходимо зарегистрироваться
 
-= render 'comment'

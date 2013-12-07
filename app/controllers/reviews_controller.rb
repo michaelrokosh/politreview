@@ -21,6 +21,7 @@ class ReviewsController < ApplicationController
     @remote_ip = request.env["HTTP_X_FORWARDED_FOR"]
     #@country = GeoIP.new('lib/GeoIP.dat').country(request.remote_ip) 
     @comment = Comment.new
+    @recent_news = News.order("created_at desc").limit(5).offset(0)
   end
 
   private
