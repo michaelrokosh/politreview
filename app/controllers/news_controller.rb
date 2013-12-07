@@ -15,6 +15,7 @@ class NewsController < ApplicationController
 
   def show
     @news = News.find_by_id(params[:id])
+    @recent_news = News.order("created_at desc").limit(5).offset(0)
   end
 
   private
