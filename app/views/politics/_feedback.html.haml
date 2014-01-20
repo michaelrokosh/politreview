@@ -1,0 +1,14 @@
+= form_for ([@politic, @politic.feedbacks.build]) do |f|
+  %p
+    = f.hidden_field :politic_id
+    = f.hidden_field :user_id, :value => current_user.id
+    = f.radio_button :feedback_type, "positive"
+    = label_tag(:positive_feedback, "Позитивний")
+    = f.radio_button :feedback_type, "neutral"
+    = label_tag(:positive_feedback, "Нейтральний")
+    = f.radio_button :feedback_type, "negative"
+    = label_tag(:positive_feedback, "Негативний")
+    = f.text_area :content, class: 'form-control', rows: 10
+
+  %p
+    = f.submit "Готово", class: 'btn btn-default'

@@ -3,9 +3,11 @@
     = f.hidden_field :news_id
     = f.hidden_field :user_id, :value => current_user.id
     = f.radio_button :review_type, "positive"
-    = label_tag(:positive_review, "Положительный")
+    = label_tag(:positive_review, "Позитивний")
+    = f.radio_button :review_type, "neutral"
+    = label_tag(:positive_review, "Нейтральний")
     = f.radio_button :review_type, "negative"
-    = label_tag(:positive_review, "Отрицательный")
+    = label_tag(:positive_review, "Негативний")
     = f.text_area :content, class: 'form-control', rows: 10
 
   %p
