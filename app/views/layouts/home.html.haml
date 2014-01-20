@@ -21,9 +21,11 @@
       .recent-news.col-md-3.col-xs-6
         %h2 Больше
         - @recent_news.each do |news|
-          %h5 
-            = news.created_at.to_s(:ru_datetime)
-          = link_to news.title, news_path(news)
+          .single-recent-news
+            %h5 
+              = news.created_at.to_s(:ru_datetime)
+            = link_to news.title, news_path(news)
+          %hr
       .hot-politics.col-md-2.col-xs-6
         %h2 Политики
         = image_tag('http://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Viktor_Yanukovych_27_April_2010-1.jpeg/250px-Viktor_Yanukovych_27_April_2010-1.jpeg')
