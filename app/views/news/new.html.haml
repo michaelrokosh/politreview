@@ -1,1 +1,6 @@
-= render 'form'
+- if user_signed_in?
+  - if current_user.admin?
+    = render 'form'
+- else
+%h1
+  У вас недостатньо прав добавлення новин.

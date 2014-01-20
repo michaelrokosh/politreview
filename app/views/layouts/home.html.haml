@@ -7,11 +7,23 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     %meta{content: "width=device-width, initial-scale=1, maximum-scale=1", name: "viewport", "user-scalable" => "no"}/
-  %body.col-md-offset-1.col-sm-offset-1.col-xs-12.col-sm-10.col-md-10
+  %body.col-md-offset-2.col-sm-offset-2.col-xs-12.col-sm-10.col-md-10
     = render 'layouts/header'
+    = link_to 'Додати політика', new_politic_path
+    = link_to 'Додати новину', new_news_path
+    .row
+      %h2 Політики
+      - @politics.each do |politic|
+        .hot-politics.col-md-2.col-xs-2
+          = link_to(image_tag(politic.photo_url, class: 'resize'), politic_path(politic))
+          %h5.name
+            = politic.name
+          .feedbacks-rating
+            %h6.feedbacks 43 
+            %h6.rating 12%
     .row
       .hot-news.col-md-7.col-xs-12
-        %h2 HOT NEWS 
+        %h2 Гарячі новини 
         = image_tag('http://news.liga.net/upload/iblock/b61/b6162cf40a735eb35d325bda4b92f704.jpg')
         %h2
           Андрей Дзындзя переведен в СИЗО
@@ -26,15 +38,3 @@
               = news.created_at.to_s(:ru_datetime)
             = link_to news.title, news_path(news)
           %hr
-      .hot-politics.col-md-2.col-xs-6
-        %h2 Политики
-        = image_tag('http://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Viktor_Yanukovych_27_April_2010-1.jpeg/250px-Viktor_Yanukovych_27_April_2010-1.jpeg')
-        %h5.name Янукович Виктор Федорович
-        .feedbacks-rating
-          %h6.feedbacks 43 
-          %h6.rating 12%
-        = image_tag ('http://news2000.com.ua/ni/2/23/233250/az.jpg')
-        %h5.name Азаров Николай Вольфович
-        .feedbacks-rating
-          %h6.feedbacks 33
-          %h6.rating 6%
