@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140120225006) do
+ActiveRecord::Schema.define(version: 20140121222000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,9 +21,8 @@ ActiveRecord::Schema.define(version: 20140120225006) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "commentable_id"
-    t.integer  "commenter_id"
+    t.integer  "user_id"
     t.string   "commentable_type"
-    t.string   "commenter_type"
   end
 
   create_table "feedbacks", force: true do |t|
