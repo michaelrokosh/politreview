@@ -12,13 +12,8 @@
     .row
       %h2 Політики
       - @politics.each do |politic|
-        .hot-politics.col-md-2.col-xs-2
+        .hot-politics.col-md-1.col-xs-1
           = link_to(image_tag(politic.photo_url, class: 'resize'), politic_path(politic))
-          %h5.name
-            = politic.name
-          .feedbacks-rating
-            %h6.feedbacks 43 
-            %h6.rating 12%
     .row
       .hot-news.col-md-7.col-xs-12
         = yield
