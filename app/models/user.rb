@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :news
   has_many :politics
-  has_many :comments
+  has_many :reviews
+  has_many :feedbacks
+  has_many :comments, as: :commenter
   VALID_USERNAME_REGEX = /\A[a-zA-Z0-9]+\Z/
   validates :username, presence: true, 
                       format: { with: VALID_USERNAME_REGEX, message: "должно состоять только из символов и цифр" },

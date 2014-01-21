@@ -10,40 +10,40 @@
     %h4
       Історія хвороби: 
       = @politic.about
-- @politic.reviews.each do |review|
-  - if review.review_type == 'positive'
+- @politic.feedbacks.each do |feedback|
+  - if feedback.feedback_type == 'positive'
     .green
-      .review
-        .review-header
+      .feedback
+        .feedback-header
           .username
             %h4
-              = review.user.username
+              = feedback.user.username
               = '(' + request.location.country + ')'
           .date
             %h4
-              = review.created_at.to_s(:ru_datetime)
-        .review-content
-          = review.content
-        .review-footer
-          = link_to "Обсуждение (#{review.comments.count})", news_review_path(@news, review)
+              = feedback.created_at.to_s(:ru_datetime)
+        .feedback-content
+          = feedback.content
+        .feedback-footer
+          = link_to "Обсуждение (#{feedback.comments.count})", politic_feedback_path(@politic, feedback)
   - elsif
     .red
-      .review
-        .review-header
+      .feedback
+        .feedback-header
           .username
             %h4
-              = review.user.username
+              = feedback.user.username
               = '(' + request.location.country + ')'
           .date
             %h4
-              = review.created_at.to_s(:ru_datetime)
-        .review-content
-          = review.content
-        .review-footer
-          = link_to "Обсуждение (#{review.comments.count})", news_review_path(@news, review)
+              = feedback.created_at.to_s(:ru_datetime)
+        .feedback-content
+          = feedback.content
+        .feedback-footer
+          = link_to "Обсуждение (#{feedback.comments.count})", politic_feedback_path(@politic, feedback)
 %h1
-  Написать рецензию
+  Написать відгук
 - if user_signed_in?
-  = render 'review'
+  = render 'feedback'
 - else
   Для написания рецензии необходимо зарегистрироваться

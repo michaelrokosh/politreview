@@ -1,0 +1,18 @@
+%h1
+  Відгук № 
+  = @feedback.id
+  про політика
+  = link_to @politic.name, politic_path(@politic)
+= @feedback.content
+.comments
+  %h3
+    Комментарии:
+  - @feedback.comments.each do |comment|
+    %h3
+      = comment.user.username
+      = request.location.country
+    = comment.content
+- if user_signed_in?
+  = render 'comment'
+- else
+  Для оставления комментариев необходимо зарегистрироваться

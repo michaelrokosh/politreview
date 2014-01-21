@@ -7,6 +7,10 @@ Politreview::Application.routes.draw do
   		resources :comments
   	end
 	end
-  resources :politics
+  resources :politics do
+  	resources :feedbacks do
+  		resources :comments
+  	end
+  end
   resources :users
 end

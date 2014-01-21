@@ -9,12 +9,14 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.create(comment_params)
     @news = News.find_by_id(params[:news_id])
+    @politic = Politic.find_by_id(params[:politic_id])
+    @feedback = Feedback.find_by_id(params[:feedback_id])
     @review = Review.find_by_id(params[:review_id])
-    redirect_to news_review_path(@news, @review)
+    redirect_to :back
   end
 
   private
   def comment_params
-    params.require(:comment).permit(:content, :user_id, :news_id, :review_id)
+    params.require(:comment).permit(:content, :commentable_id, :commenter_id, :commenter_type, :commentable_type)
   end
 end

@@ -14,6 +14,7 @@
             %h4
               = review.created_at.to_s(:ru_datetime)
         .review-content
+          pos
           = review.content
         .review-footer
           = link_to "Обсуждение (#{review.comments.count})", news_review_path(@news, review)
@@ -30,24 +31,27 @@
               %h4
                 = review.created_at.to_s(:ru_datetime)
           .review-content
+            neg
             = review.content
           .review-footer
             = link_to "Обсуждение (#{review.comments.count})", news_review_path(@news, review)
     - else
-      .grey
-        .review
-          .review-header
-            .username
-              %h4
-                = review.user.username
-                = '(' + request.location.country + ')'
-            .date
-              %h4
-                = review.created_at.to_s(:ru_datetime)
-          .review-content
-            = review.content
-          .review-footer
-            = link_to "Обсуждение (#{review.comments.count})", news_review_path(@news, review)
+      - if review.review_type == 'neutral'
+        .grey
+          .review
+            .review-header
+              .username
+                %h4
+                  = review.user.username
+                  = '(' + request.location.country + ')'
+              .date
+                %h4
+                  = review.created_at.to_s(:ru_datetime)
+            .review-content
+              neu
+              = review.content
+            .review-footer
+              = link_to "Обсуждение (#{review.comments.count})", news_review_path(@news, review)
 %h1
   Написать рецензию
 - if user_signed_in?
