@@ -1,13 +1,4 @@
 = form_for @news do |f|
-  - if @news.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@page.errors.count, "error")
-        prohibited
-        this page from being saved:
-      %ul
-        - @news.errors.full_messages.each do |msg|
-          %li= msg
   %p
     = f.hidden_field :user_id, :value => current_user.id
     %br
