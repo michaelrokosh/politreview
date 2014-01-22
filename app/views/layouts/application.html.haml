@@ -12,7 +12,7 @@
     .row
       %h2 Політики
       - @politics.each do |politic|
-        .hot-politics.col-md-1.col-xs-3
+        .hot-politics.col-md-1.col-xs-2
           = link_to(image_tag(politic.photo_url, class: 'resize'), politic_path(politic))
     .row
       .hot-news.col-md-8.col-xs-12
