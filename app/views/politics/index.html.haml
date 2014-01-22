@@ -1,0 +1,8 @@
+- @politics.each do |politic|
+  .hot-politics.col-md-2.col-xs-4
+    = link_to(image_tag(politic.photo_url, class: 'resize'), politic_path(politic))
+    %h5.name
+      = politic.name
+    .feedbacks-rating
+      %h6.feedbacks 43 
+      %h6.rating 12%

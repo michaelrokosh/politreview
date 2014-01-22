@@ -12,7 +12,8 @@
     = link_to 'Додати політика', new_politic_path
     = link_to 'Додати новину', new_news_path
     .row
-      %h2 Політики
+      %h2 
+        = link_to 'Політики', politics_path
       - @politics.each do |politic|
         .hot-politics.col-md-2.col-xs-4
           = link_to(image_tag(politic.photo_url, class: 'resize'), politic_path(politic))
