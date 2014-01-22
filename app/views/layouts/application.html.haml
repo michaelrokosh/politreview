@@ -12,12 +12,12 @@
     .row
       %h2 Політики
       - @politics.each do |politic|
-        .hot-politics.col-md-1.col-xs-1
+        .hot-politics.col-md-1.col-xs-3
           = link_to(image_tag(politic.photo_url, class: 'resize'), politic_path(politic))
     .row
-      .hot-news.col-md-7.col-xs-12
+      .hot-news.col-md-8.col-xs-12
         = yield
-      .recent-news.col-md-3.col-xs-6
+      .recent-news.col-md-4.col-xs-6
         %h2 Больше
         - @recent_news.each do |news|
           .single-recent-news

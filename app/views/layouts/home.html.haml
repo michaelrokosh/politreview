@@ -14,7 +14,7 @@
     .row
       %h2 Політики
       - @politics.each do |politic|
-        .hot-politics.col-md-2.col-xs-2
+        .hot-politics.col-md-2.col-xs-3
           = link_to(image_tag(politic.photo_url, class: 'resize'), politic_path(politic))
           %h5.name
             = politic.name
@@ -22,16 +22,15 @@
             %h6.feedbacks 43 
             %h6.rating 12%
     .row
-      .hot-news.col-md-7.col-xs-12
+      .hot-news.col-md-8.col-xs-12
         %h2 Гарячі новини 
-        = image_tag('http://news.liga.net/upload/iblock/b61/b6162cf40a735eb35d325bda4b92f704.jpg')
+        - unless @news.image_url == nil
+          = image_tag(@news.image_url)
         %h2
-          Андрей Дзындзя переведен в СИЗО
-        Активиста "Дорожного контроля" Андрея Дзындзю, арестованного сегодня на два месяца, действительно вывели тайным ходом из Шевченковского суда и отправили в СИЗО. Об этом корреспонденту ЛІГАБізнесІнформ сообщил лидер фракции Батькивщина Арсений Яценюк. Оппозиционеру это стало известно от замначальника подразделения "Грифон", обеспечивающего безопасность судов.
-
-        Яценюк сообщил, что обошел все помещения суда. В суде нет ни Дзындзи, ни судей, - только милиционеры. "сказали даже, что уже звонок поступил из СИЗО, что его (Дзындзю, - ред.) уже привезли... там было все начальство. Я сказал "Покажите, где задержанные". Отвечают "Мы их отвезли". Информация подтвердилась", - сказал Яценюк. 
-      .recent-news.col-md-3.col-xs-6
-        %h2 Больше
+          = @news.title
+        = @news.content
+      .recent-news.col-md-4.col-xs-12
+        %h2 Більше
         - @recent_news.each do |news|
           .single-recent-news
             %h5 

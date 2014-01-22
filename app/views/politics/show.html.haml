@@ -7,6 +7,8 @@
     %h3
       Діагноз:
       = @politic.post
+.row
+  .col-md-12.col-xs-12
     %h4
       Історія хвороби: 
       = @politic.about
@@ -46,4 +48,6 @@
 - if user_signed_in?
   = render 'feedback'
 - else
-  Для написания рецензии необходимо зарегистрироваться
+  Для написания відгуку необходимо здійснити вхід.
+  = link_to 'Ввійти', new_user_session_path
+  = link_to 'Зареєстуватись', new_user_registration_path

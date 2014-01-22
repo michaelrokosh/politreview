@@ -6,12 +6,11 @@
       - if user_signed_in?
         %ul
           %h4
-            %li= link_to ' Новая новость', new_news_path(@page), class: "fa fa-plus", title: "Новая новость"
-            %li= link_to current_user.username, user_path(current_user), title: "Профиль"
-            %li= link_to ' Выход', destroy_user_session_path, method: :delete, class: "fa fa-sign-out", title: "Выход"
+            %li= link_to current_user.username, user_path(current_user), title: "Профіль"
+            %li= link_to ' Выход', destroy_user_session_path, method: :delete, class: "fa fa-sign-out", title: "Вихід"
       - else
         %ul
           %h4
-            %li= link_to 'Войти', new_user_session_path
-            %li= link_to 'Зарегистрироваться', new_user_registration_path   
+            %li= link_to 'Ввійти', new_user_session_path
+            %li= link_to 'Зареєстуватись', new_user_registration_path   
   %nav.navigation

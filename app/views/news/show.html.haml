@@ -34,7 +34,7 @@
             neg
             = review.content
           .review-footer
-            = link_to "Обсуждение (#{review.comments.count})", news_review_path(@news, review)
+            = link_to "Обговорення (#{review.comments.count})", news_review_path(@news, review)
     - else
       - if review.review_type == 'neutral'
         .grey
@@ -51,10 +51,12 @@
               neu
               = review.content
             .review-footer
-              = link_to "Обсуждение (#{review.comments.count})", news_review_path(@news, review)
+              = link_to "Обговорення (#{review.comments.count})", news_review_path(@news, review)
 %h1
-  Написать рецензию
+  Написати рецензию
 - if user_signed_in?
   = render 'review'
 - else
-  Для написания рецензии необходимо зарегистрироваться
+  Для написания рецензії необходимо здійснити вхід.
+  = link_to 'Ввійти', new_user_session_path
+  = link_to 'Зареєстуватись', new_user_registration_path
