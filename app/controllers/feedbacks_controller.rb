@@ -21,6 +21,20 @@ class FeedbacksController < ApplicationController
     @comment = Comment.new
   end
 
+  def vote_up
+    @feedback = Feedback.find(params[:id])
+    @politic = Politic.find(params[:politic_id])
+    Vote.record_vote(current_user, @feedback, 1, 'Feedback', true)
+    redirect_to :back
+  end
+
+  def vote_down
+    @feedback = Feedback.find(params[:image_id])
+    @politic = Politic.find(params[:politic_id])
+    Vote.record_vote(current_user, @feedback, -1, 'Feedback', false)
+    redirect_to :back
+  end
+
   private
   def feedback_params
     params.require(:feedback).permit(:content, :user_id, :feedback_type, :politic_id)

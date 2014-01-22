@@ -23,6 +23,20 @@ class ReviewsController < ApplicationController
     @comment = Comment.new
   end
 
+  def vote_up
+    @review = Review.find(params[:id])
+    @news = News.find(params[:news_id])
+    Vote.record_vote(current_user, @review, 1, 'Review', true)
+    redirect_to :back
+  end
+
+  def vote_down
+    @review = Review.find(params[:id])
+    @news = News.find(params[:news_id])
+    Vote.record_vote(current_user, @review, -1, 'Review', false)
+    redirect_to :back
+  end
+
   private
   def review_params
     params.require(:review).permit(:content, :user_id, :review_type, :news_id)

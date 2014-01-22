@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  voteable_id: 1
+  voter_id: 1
+  voteable_type: MyString
+  user_id: 1
+  rate: 9.99
+
+two:
+  voteable_id: 1
+  voter_id: 1
+  voteable_type: MyString
+  user_id: 1
+  rate: 9.99

@@ -12,3 +12,33 @@
 //
 //= require jquery
 //= require jquery_ujs
+
+$(function() {
+  $('.vote-against').click(function() {
+    $button = $(this)
+    if ( $( ".votes" ).hasClass( "make-vote" ) ) {
+      $.ajax({
+        type: "POST",
+        url: $button.attr('data-article-type') + $button.attr('data-article-id') + $button.attr('data-voteable-type') + $button.attr('data-voteable-id') + '/vote_down',
+        success: function() {
+          $button.removeClass('make-vote').addClass('vote-made').html("<span>OK!</span>"); ; 
+        }
+      })
+    }
+  });
+});
+
+$(function() {
+  $('.vote-for').click(function() {
+    $button = $(this)
+    if ( $( ".votes" ).hasClass( "make-vote" ) ) {
+      $.ajax({
+        type: "POST",
+        url: $button.attr('data-article-type') + $button.attr('data-article-id') + $button.attr('data-voteable-type') + $button.attr('data-voteable-id') + '/vote_up',
+        success: function() {
+          $button.removeClass('make-vote').addClass('vote-made').html("<span>OK!</span>"); ; 
+        }
+      })
+    }
+  });
+});

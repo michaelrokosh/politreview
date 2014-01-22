@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :feedbacks
   has_many :comments
+  has_many :votes
   VALID_USERNAME_REGEX = /\A[a-zA-Z0-9]+\Z/
   validates :username, presence: true, 
                       format: { with: VALID_USERNAME_REGEX, message: "должно состоять только из символов и цифр" },

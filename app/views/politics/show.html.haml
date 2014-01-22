@@ -30,6 +30,9 @@
         = feedback.content
       .feedback-footer
         = link_to "Обсуждение (#{feedback.comments.count})", politic_feedback_path(@politic, feedback)
+        .votes.make-vote
+          %i.vote-for.fa.fa-thumbs-o-up{ data: {:article_type => "/politics/", :article_id => @politic.id, :voteable_type => "/feedbacks/", :voteable_id => feedback.id} }
+          %i.vote-against.fa.fa-thumbs-o-down{ data: {:article_type => "/politics/", :article_id => @politic.id, :voteable_type => "/feedbacks/", :voteable_id => feedback.id} }
 %h1
   Написать відгук
 - if user_signed_in?
