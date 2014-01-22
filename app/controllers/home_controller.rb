@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-  	@politics = Politic.all
+  	@politics = Politic.all.limit(6)
   	@news = News.last
   end
 end

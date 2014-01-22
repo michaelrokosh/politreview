@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def set_politics
- 	@politics = Politic.all
+ 	@politics = Politic.all.limit(12)
  end
 
   def set_recent_news
