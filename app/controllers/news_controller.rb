@@ -17,6 +17,19 @@ class NewsController < ApplicationController
     @news = News.find_by_id(params[:id])
   end
 
+  def edit
+    @news = News.find(params[:id])
+  end
+
+  def update
+    @news = News.find(params[:id])
+    if @news.update(news_params)
+      redirect_to @news
+    else
+      render 'edit'
+    end
+  end
+
   private
   def news_params
     params.require(:news).permit(:title, :content, :user_id, :image_url)

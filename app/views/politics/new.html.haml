@@ -1,13 +1,6 @@
 - if user_signed_in?
   - if current_user.admin?
-    = form_for @politic do |f|
-      %p
-        = f.text_field :photo_url, placeholder: "Посилання на картинку"
-      %p
-        = f.text_field :name, placeholder: "ФІО пацієнта"
-      %p
-        = f.text_field :post, placeholder: "Назва хвороби(посада)"
-      %p
-        = f.text_area :about, placeholder: "Історія хвороби"
-      %p
-        = f.submit 'Створити!'
+    = render 'form'
+- else
+  %h1
+    У вас недостатньо прав добавлення новин.

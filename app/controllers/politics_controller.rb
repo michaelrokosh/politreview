@@ -22,6 +22,19 @@ class PoliticsController < ApplicationController
     @politics = Politic.all
   end
 
+  def edit
+    @politic = Politic.find(params[:id])
+  end
+
+  def update
+    @politic = Politic.find(params[:id])
+    if @politic.update(politic_params)
+      redirect_to @politic
+    else
+      render 'edit'
+    end
+  end
+
   private
   def politic_params
     params.require(:politic).permit(:name, :about, :photo_url, :post)
