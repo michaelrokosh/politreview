@@ -16,51 +16,20 @@
       Історія хвороби: 
       = @politic.about
 - @politic.feedbacks.each do |feedback|
-  - if feedback.feedback_type == 'positive'
-    .green
-      .feedback
-        .feedback-header
-          .username
-            %h4
-              = feedback.user.username
-              = '(' + request.location.country + ')'
-          .date
-            %h4
-              = feedback.created_at.to_s(:ru_datetime)
-        .feedback-content
-          = feedback.content
-        .feedback-footer
-          = link_to "Обсуждение (#{feedback.comments.count})", politic_feedback_path(@politic, feedback)
-  - elsif feedback.feedback_type == 'negative'
-    .red
-      .feedback
-        .feedback-header
-          .username
-            %h4
-              = feedback.user.username
-              = '(' + request.location.country + ')'
-          .date
-            %h4
-              = feedback.created_at.to_s(:ru_datetime)
-        .feedback-content
-          = feedback.content
-        .feedback-footer
-          = link_to "Обсуждение (#{feedback.comments.count})", politic_feedback_path(@politic, feedback)
-  - elsif feedback.feedback_type == 'neutral'
-    .grey
-      .feedback
-        .feedback-header
-          .username
-            %h4
-              = feedback.user.username
-              = '(' + request.location.country + ')'
-          .date
-            %h4
-              = feedback.created_at.to_s(:ru_datetime)
-        .feedback-content
-          = feedback.content
-        .feedback-footer
-          = link_to "Обсуждение (#{feedback.comments.count})", politic_feedback_path(@politic, feedback)
+  %div{class: feedback.feedback_type}
+    .feedback
+      .feedback-header
+        .username
+          %h4
+            = feedback.user.username
+            = '(' + request.location.country + ')'
+        .date
+          %h4
+            = feedback.created_at.to_s(:ru_datetime)
+      .feedback-content
+        = feedback.content
+      .feedback-footer
+        = link_to "Обсуждение (#{feedback.comments.count})", politic_feedback_path(@politic, feedback)
 %h1
   Написать відгук
 - if user_signed_in?
