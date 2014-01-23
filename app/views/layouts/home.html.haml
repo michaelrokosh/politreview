@@ -25,7 +25,6 @@
     .row
       .hot-news.col-md-8.col-xs-12
         %h2 Гарячі новини 
-        share
         - unless @news.image_url == nil
           = image_tag(@news.image_url)
         %h2
@@ -40,3 +39,4 @@
               = news.created_at.to_s(:ru_datetime)
             = link_to news.title, news_path(news)
           %hr
+    = render 'layouts/footer'

@@ -27,11 +27,35 @@
             = link_to 'Посилання на рецензію', news_path(@news, anchor: review.id)
           .comment-link
             = link_to "Обговорення (#{review.comments.count})", news_review_path(@news, review)
-        .votes.make-vote
-          .rating
-            = review.rating
-          %i.vote-for.fa.fa-thumbs-o-up{ data: {:article_type => "/news/", :article_id => @news.id, :voteable_type => "/reviews/", :voteable_id => review.id} }
-          %i.vote-against.fa.fa-thumbs-o-down{ data: {:article_type => "/news/", :article_id => @news.id, :voteable_type => "/reviews/", :voteable_id => review.id} }
+        - if user_signed_in?
+          - if review.user.id == current_user.id
+            .voted
+              .rating
+                = review.rating
+          - else
+            - if current_user.voted_for?(review.id)
+              - if current_user.positive_vote?(review.id)
+                .voted
+                  .rating
+                    = review.rating
+                  %i.voted-for.fa.fa-thumbs-up.green
+              - else 
+                .voted
+                  .rating
+                    = review.rating
+                  %i.voted-against.fa.fa-thumbs-down.red
+            - else
+              .votes.make-vote
+                .rating
+                  = review.rating
+                %i.vote-for.fa.fa-thumbs-o-up{ data: {:article_type => "/news/", :article_id => @news.id, :voteable_type => "/reviews/", :voteable_id => review.id} }
+                %i.vote-against.fa.fa-thumbs-o-down{ data: {:article_type => "/news/", :article_id => @news.id, :voteable_type => "/reviews/", :voteable_id => review.id} }
+        - else
+          .votes
+            = link_to '', new_user_session_path, class: 'vote-for fa fa-thumbs-o-up'
+            = link_to '', new_user_session_path, class: 'vote-against fa fa-thumbs-o-down'
+            .rating
+              = review.rating
 %h1
   Написати рецензию
 - if user_signed_in?

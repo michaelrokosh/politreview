@@ -79,17 +79,29 @@ h1 {
   }
   .review-footer, .feedback-footer {
     margin-bottom: 10px;
+    overflow: hidden;
     .links {
       float: left;
+    }
+    .voted {
+      float: right;
+      text-align: center;
+      margin: 0px 10px 10px 0px;
+      .voted-for, .voted-against {
+        font-size: 20px;
+        text-decoration: none;
+      }
     }
     .votes {
       float: right;
       margin: 0px 10px 10px 0px;
+      .vote-for, .vote-against {
+        cursor: pointer;
+        font-size: 20px;
+        text-decoration: none;
+      }
       .rating {
         text-align: center;
-      }
-      i {
-        font-size: 20px;
       }
     }
   }
@@ -113,5 +125,16 @@ h1 {
   background-color: #ffe3e3;
   a {
     color: #777;
+  }
+}
+
+.radio {
+  display: inline-block;
+  margin-top: 0;
+}
+
+footer {
+  .cr {
+    margin-bottom: 20px;
   }
 }

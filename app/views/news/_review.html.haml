@@ -2,12 +2,15 @@
   %p
     = f.hidden_field :news_id
     = f.hidden_field :user_id, :value => current_user.id
-    = f.radio_button :review_type, "positive"
-    = label_tag(:positive_review, "Позитивний")
-    = f.radio_button :review_type, "neutral"
-    = label_tag(:positive_review, "Нейтральний")
-    = f.radio_button :review_type, "negative"
-    = label_tag(:positive_review, "Негативний")
+    .radio
+      = f.radio_button :review_type, "positive", id: "optionsRadios1"
+      = label_tag(:optionsRadios1, "Позитивний")
+    .radio
+      = f.radio_button :review_type, "neutral", id: "optionsRadios2"
+      = label_tag(:optionsRadios2, "Нейтральний")
+    .radio
+      = f.radio_button :review_type, "negative", id: "optionsRadios3"
+      = label_tag(:optionsRadios3, "Негативний")
     = f.text_area :content, class: 'form-control', rows: 10
 
   %p

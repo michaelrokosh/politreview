@@ -35,11 +35,35 @@
             = link_to 'Посилання на відгук', politic_path(@politic, anchor: feedback.id)
           .comment-link
             = link_to "Обсуждение (#{feedback.comments.count})", politic_feedback_path(@politic, feedback)
-        .votes.make-vote
-          .rating
-            = feedback.rating
-          %i.vote-for.fa.fa-thumbs-o-up{ data: {:article_type => "/politics/", :article_id => @politic.id, :voteable_type => "/feedbacks/", :voteable_id => feedback.id} }
-          %i.vote-against.fa.fa-thumbs-o-down{ data: {:article_type => "/politics/", :article_id => @politic.id, :voteable_type => "/feedbacks/", :voteable_id => feedback.id} }
+        - if user_signed_in?
+          - if feedback.user.id == current_user.id
+            .voted
+              .rating
+                = feedback.rating
+          - else
+            - if current_user.voted_for?(feedback.id)
+              - if current_user.positive_vote?(feedback.id)
+                .voted
+                  .rating
+                    = feedback.rating
+                  %i.voted-for.fa.fa-thumbs-up.green
+              - else 
+                .voted
+                  .rating
+                    = feedback.rating
+                  %i.voted-against.fa.fa-thumbs-down.red
+            - else
+              .votes.make-vote
+                .rating
+                  = feedback.rating
+                %i.vote-for.fa.fa-thumbs-o-up{ data: {:article_type => "/politics/", :article_id => @politic.id, :voteable_type => "/feedbacks/", :voteable_id => feedback.id} }
+                %i.vote-against.fa.fa-thumbs-o-down{ data: {:article_type => "/politics/", :article_id => @politic.id, :voteable_type => "/feedbacks/", :voteable_id => feedback.id} }
+        - else
+          .votes
+            = link_to '', new_user_session_path, class: 'vote-for fa fa-thumbs-o-up'
+            = link_to '', new_user_session_path, class: 'vote-against fa fa-thumbs-o-down'
+            .rating
+              = feedback.rating
 %h1
   Написать відгук
 - if user_signed_in?
