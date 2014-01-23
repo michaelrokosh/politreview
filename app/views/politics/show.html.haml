@@ -17,6 +17,7 @@
       = @politic.about
 - @politic.feedbacks.each do |feedback|
   %div{class: feedback.feedback_type}
+    %a{name: feedback.id}
     .feedback
       .feedback-header
         .username
@@ -29,10 +30,15 @@
       .feedback-content
         = feedback.content
       .feedback-footer
-        = link_to "Обсуждение (#{feedback.comments.count})", politic_feedback_path(@politic, feedback)
+        .feedback-link
+          = link_to 'Посилання на відгук', politic_path(@politic, anchor: feedback.id)
+        .comment-link
+          = link_to "Обсуждение (#{feedback.comments.count})", politic_feedback_path(@politic, feedback)
         .votes.make-vote
           %i.vote-for.fa.fa-thumbs-o-up{ data: {:article_type => "/politics/", :article_id => @politic.id, :voteable_type => "/feedbacks/", :voteable_id => feedback.id} }
           %i.vote-against.fa.fa-thumbs-o-down{ data: {:article_type => "/politics/", :article_id => @politic.id, :voteable_type => "/feedbacks/", :voteable_id => feedback.id} }
+          .rating
+            = review.rating
 %h1
   Написать відгук
 - if user_signed_in?

@@ -6,6 +6,7 @@
 = @news.content
 - @news.reviews.each do |review|
   %div{class: review.review_type}
+    %a{name: review.id}
     .review
       .review-header
         .username
@@ -16,10 +17,17 @@
           %h4
             = review.created_at.to_s(:ru_datetime)
       .review-content
-        neu
         = review.content
       .review-footer
-        = link_to "Обговорення (#{review.comments.count})", news_review_path(@news, review)
+        .review-link
+          = link_to 'Посилання на рецензію', news_path(@news, anchor: review.id)
+        .comment-link
+          = link_to "Обговорення (#{review.comments.count})", news_review_path(@news, review)
+        .votes.make-vote
+          %i.vote-for.fa.fa-thumbs-o-up{ data: {:article_type => "/news/", :article_id => @news.id, :voteable_type => "/reviews/", :voteable_id => review.id} }
+          %i.vote-against.fa.fa-thumbs-o-down{ data: {:article_type => "/news/", :article_id => @news.id, :voteable_type => "/reviews/", :voteable_id => review.id} }
+          .rating
+            = review.rating
 %h1
   Написати рецензию
 - if user_signed_in?
