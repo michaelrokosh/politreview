@@ -38,7 +38,7 @@
           %i.vote-for.fa.fa-thumbs-o-up{ data: {:article_type => "/politics/", :article_id => @politic.id, :voteable_type => "/feedbacks/", :voteable_id => feedback.id} }
           %i.vote-against.fa.fa-thumbs-o-down{ data: {:article_type => "/politics/", :article_id => @politic.id, :voteable_type => "/feedbacks/", :voteable_id => feedback.id} }
           .rating
-            = review.rating
+            = feedback.rating
 %h1
   Написать відгук
 - if user_signed_in?
