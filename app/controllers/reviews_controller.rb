@@ -23,6 +23,12 @@ class ReviewsController < ApplicationController
     @comment = Comment.new
   end
 
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to :back
+  end
+
   def vote_up
     @review = Review.find(params[:id])
     @news = News.find(params[:news_id])

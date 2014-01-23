@@ -21,6 +21,12 @@ class FeedbacksController < ApplicationController
     @comment = Comment.new
   end
 
+  def destroy
+    @feedback = Feedback.find(params[:id])
+    @feedback.destroy
+    redirect_to :back
+  end
+
   def vote_up
     @feedback = Feedback.find(params[:id])
     @politic = Politic.find(params[:politic_id])
