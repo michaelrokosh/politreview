@@ -15,6 +15,17 @@
     %h4
       Історія хвороби: 
       = @politic.about
+    %span.star-rating
+      %span.star
+      %span.star
+      %span.star
+      %span.star
+      %span.star
+      %span.star
+      %span.star
+      %span.star
+      %span.star
+      %span.star
 - @politic.feedbacks.each do |feedback|
   %div{class: feedback.feedback_type}
     %a{name: feedback.id}
