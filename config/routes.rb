@@ -12,6 +12,9 @@ Politreview::Application.routes.draw do
   	end
 	end
   resources :politics do
+    member do
+      post :stars
+    end
   	resources :feedbacks do
       member do
         post :vote_up

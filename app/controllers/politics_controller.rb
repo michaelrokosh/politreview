@@ -16,6 +16,7 @@ class PoliticsController < ApplicationController
   def show 
     @politic = Politic.find(params[:id])
     @politics = Politic.all
+    @average_rating = @politic.rating / @politic.votes_counter
   end
 
   def index
@@ -34,6 +35,13 @@ class PoliticsController < ApplicationController
       render 'edit'
     end
   end
+
+  def stars
+    @politic = Politic.find(params[:id])
+    @rate = params[:rate].to_f
+    Vote.record_star(current_user, @politic, @rate, 'Politic', true)
+    redirect_to :back
+  end 
 
   private
   def politic_params

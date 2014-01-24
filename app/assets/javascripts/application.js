@@ -14,6 +14,21 @@
 //= require jquery_ujs
 
 $(function() {
+  $('.star').click(function() {
+    $button = $(this)
+    if ( $( ".star-rating" ).hasClass( "active" ) ) {
+      $.ajax({
+        type: "POST",
+        url: '/politics/' + $button.attr('data-politic-id') + '/stars?rate=' + $button.attr('data-rate'),
+        success: function() {
+          $button.removeClass('active').addClass('inactive').html("<span>OK!</span>"); ; 
+        }
+      })
+    }
+  });
+});
+
+$(function() {
   $('.vote-against').click(function() {
     $button = $(this)
     if ( $( ".votes" ).hasClass( "make-vote" ) ) {
