@@ -43,6 +43,6 @@ class FeedbacksController < ApplicationController
 
   private
   def feedback_params
-    params.require(:feedback).permit(:content, :user_id, :feedback_type, :politic_id)
+    params.require(:feedback).permit(:content, :user_id, :emo_type, :politic_id)
   end
 end

@@ -5,14 +5,17 @@
   = @news.title
 = @news.content
 - @news.reviews.each do |review|
-  %div{class: review.review_type}
+  %div{class: review.emo_type}
     %a{name: review.id}
     .review
       .review-header
         .username
           %h4
             = review.user.username
-            = '(' + request.location.country + ')'
+            - if request.location.country == 'Ukraine'
+              .flag.flag-ua
+            - elsif request.location.country == 'Russia'
+              .flag.flag-ru
             - if user_signed_in?
               - if current_user.admin?
                 = link_to 'В пічку!', news_review_path(@news, review), method: :delete

@@ -1,0 +1,46 @@
+%h1
+  = @user.username
+- @reviews_feedbacks.each do |rf|
+  %div{class: rf.emo_type}
+    %a{name: rf.id}
+    .review
+      .review-header
+        .username
+          %h4
+            = rf.user.username
+            = '(' + request.location.country + ')'
+        .date
+          %h4
+            = rf.created_at.to_s(:ru_datetime)
+      .review-content
+        = rf.content
+      .review-footer
+        - if user_signed_in?
+          - if rf.user.id == current_user.id
+            .voted
+              .rating
+                = rf.rating
+          - else
+            - if current_user.voted_for?(review.id)
+              - if current_user.positive_vote?(review.id)
+                .voted
+                  .rating
+                    = rf.rating
+                  %i.voted-for.fa.fa-thumbs-up.green
+              - else 
+                .voted
+                  .rating
+                    = rf.rating
+                  %i.voted-against.fa.fa-thumbs-down.red
+            - else
+              .votes.make-vote
+                .rating
+                  = rf.rating
+                %i.vote-for.fa.fa-thumbs-o-up{ data: {:article_type => "/news/", :article_id => @news.id, :voteable_type => "/reviews/", :voteable_id => rf.id} }
+                %i.vote-against.fa.fa-thumbs-o-down{ data: {:article_type => "/news/", :article_id => @news.id, :voteable_type => "/reviews/", :voteable_id => rf.id} }
+        - else
+          .votes
+            = link_to '', new_user_session_path, class: 'vote-for fa fa-thumbs-o-up'
+            = link_to '', new_user_session_path, class: 'vote-against fa fa-thumbs-o-down'
+            .rating
+              = rf.rating

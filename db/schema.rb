@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140125102428) do
+ActiveRecord::Schema.define(version: 20140125154427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20140125102428) do
     t.integer  "politic_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "feedback_type", default: "neutral"
-    t.decimal  "rating",        default: 0.0
+    t.string   "emo_type",   default: "neutral"
+    t.decimal  "rating",     default: 0.0
   end
 
   create_table "news", force: true do |t|
@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(version: 20140125102428) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "news_id"
-    t.string   "review_type", default: "neutral"
-    t.decimal  "rating",      default: 0.0
+    t.string   "emo_type",   default: "neutral"
+    t.decimal  "rating",     default: 0.0
   end
 
   create_table "users", force: true do |t|
