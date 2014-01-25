@@ -36,6 +36,12 @@ class PoliticsController < ApplicationController
     end
   end
 
+  def destroy
+    @politic = Politic.find(params[:id])
+    @politic.destroy
+    redirect_to :root
+  end
+
   def stars
     @politic = Politic.find(params[:id])
     @rate = params[:rate].to_f

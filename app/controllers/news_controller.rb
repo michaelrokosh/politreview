@@ -30,6 +30,12 @@ class NewsController < ApplicationController
     end
   end
 
+  def destroy
+    @news = News.find(params[:id])
+    @news.destroy
+    redirect_to :back
+  end
+
   private
   def news_params
     params.require(:news).permit(:title, :content, :user_id, :image_url)

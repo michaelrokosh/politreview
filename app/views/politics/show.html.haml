@@ -1,20 +1,16 @@
 - if user_signed_in?
   - if current_user.admin?
     = link_to 'Коригувати', edit_politic_path(@politic)
+    = link_to 'В пічку!', politic_path(@politic), method: :delete
 .row
   .col-md-4.col-xs-4
     = image_tag(@politic.photo_url)
-  .col-md-8.col-xs-8
+  .col-md-8.col-xs-12
     %h1
       = @politic.name 
     %h3
       Діагноз:
       = @politic.post
-.row
-  .col-md-12.col-xs-12
-    %h4
-      Історія хвороби: 
-      = @politic.about
     %span.star-rating.active
       %span.star{ data: { :politic_id => @politic.id, :rate => 10} }
       %span.star{ data: { :politic_id => @politic.id, :rate => 9} }
@@ -28,6 +24,11 @@
       %span.star{ data: { :politic_id => @politic.id, :rate => 1} }
     %span.average-rating  
       = "#{@average_rating}/10"
+.row
+  .col-md-12.col-xs-12
+    %h4
+      Історія хвороби: 
+      = @politic.about
 - @politic.feedbacks.each do |feedback|
   %div{class: feedback.feedback_type}
     %a{name: feedback.id}
@@ -37,6 +38,9 @@
           %h4
             = feedback.user.username
             = '(' + request.location.country + ')'
+            - if user_signed_in?
+              - if current_user.admin?
+                = link_to 'В пічку!', news_review_path(@news, review), method: :delete
         .date
           %h4
             = feedback.created_at.to_s(:ru_datetime)
