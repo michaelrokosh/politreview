@@ -40,7 +40,7 @@
             = '(' + request.location.country + ')'
             - if user_signed_in?
               - if current_user.admin?
-                = link_to 'В пічку!', news_review_path(@news, review), method: :delete
+                = link_to 'В пічку!', news_feedback_path(@news, feedback), method: :delete
         .date
           %h4
             = feedback.created_at.to_s(:ru_datetime)
