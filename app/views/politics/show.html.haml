@@ -40,13 +40,21 @@
     %a{name: feedback.id}
     .feedback
       .feedback-header
-        .username
-          %h4
+        .user
+          .username
             = feedback.user.username
-            = '(' + request.location.country + ')'
-            - if user_signed_in?
-              - if current_user.admin?
-                = link_to 'В пічку!', politic_feedback_path(@politic, feedback), method: :delete
+          - if request.location.country == 'Ukraine'
+            .flag.flag-ua
+          - elsif request.location.country == 'Russia'
+            .flag.flag-ru
+          - elsif request.location.country == 'Reserved'
+            .flag.flag-eu
+          - else
+            %span
+              = request.location.country
+          - if user_signed_in?
+            - if current_user.admin?
+              = link_to 'В пічку!', politic_feedback_path(@politic, feedback), method: :delete
         .date
           %h4
             = feedback.created_at.to_s(:ru_datetime)
