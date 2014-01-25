@@ -24,6 +24,8 @@
       %span.star{ data: { :politic_id => @politic.id, :rate => 1} }
     %span.average-rating  
       = "#{@average_rating}/10"
+    .votes_counter
+      = "Людей проголосувало: #{@politic.votes.count}"
 .row
   .col-md-12.col-xs-12
     %h4
