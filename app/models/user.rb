@@ -12,9 +12,7 @@ class User < ActiveRecord::Base
   VALID_USERNAME_REGEX = /\A[a-zA-Z0-9]+\Z/
   validates :username, presence: true, 
                       uniqueness: { case_sensitive: false, message: "занато" },
-                      length: { minimum: 3, maximum: 15, message: "должно быть в пределе 3-15 символов" },
-                      exclusion: { in: %w(pages page tags tag search results recent top subject subjects categories category books book user users sign_in sign_out registration pro about contact adv advertise store shop),
-                      message: "занят" }
+                      length: { minimum: 3, maximum: 15, message: "должно быть в пределе 3-15 символов" }
 
   def self.find_for_vkontakte_oauth access_token
     if user = User.where(url: access_token.info.urls.Vkontakte).first
