@@ -11,6 +11,7 @@
       - else
         %ul
           %h4
+            %li= link_to "Ввійти через VK", user_omniauth_authorize_path(:vkontakte)
             %li= link_to 'Ввійти', new_user_session_path
             %li= link_to 'Зареєстуватись', new_user_registration_path   
   %nav.navigation
