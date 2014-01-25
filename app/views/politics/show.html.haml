@@ -4,7 +4,11 @@
     = link_to 'В пічку!', politic_path(@politic), method: :delete
 .row
   .col-md-4.col-xs-4
-    = image_tag(@politic.photo_url)
+    .photo
+      .object
+        .frame
+          .canvas
+            = image_tag(@politic.photo_url)
   .col-md-8.col-xs-12
     %h1
       = @politic.name 
