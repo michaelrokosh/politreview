@@ -16,7 +16,6 @@ class PoliticsController < ApplicationController
   def show 
     @politic = Politic.find(params[:id])
     @politics = Politic.all
-    @average_rating = @politic.rating / @politic.votes_counter
   end
 
   def index
