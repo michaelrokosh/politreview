@@ -9,16 +9,21 @@
     %a{name: review.id}
     .review
       .review-header
-        .username
-          %h4
+        .user
+          .username
             = review.user.username
-            - if request.location.country == 'Ukraine'
-              .flag.flag-ua
-            - elsif request.location.country == 'Russia'
-              .flag.flag-ru
-            - if user_signed_in?
-              - if current_user.admin?
-                = link_to 'В пічку!', news_review_path(@news, review), method: :delete
+          - if request.location.country == 'Ukraine'
+            .flag.flag-ua
+          - elsif request.location.country == 'Russia'
+            .flag.flag-ru
+          - elsif request.location.country == 'Reserved'
+            .flag.flag-eu
+          - else
+            %span
+              = request.location.country
+          - if user_signed_in?
+            - if current_user.admin?
+              = link_to 'В пічку!', news_review_path(@news, review), method: :delete
         .date
           %h4
             = review.created_at.to_s(:ru_datetime)
