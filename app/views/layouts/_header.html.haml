@@ -15,3 +15,7 @@
             %li= link_to 'Ввійти', new_user_session_path
             %li= link_to 'Зареєстуватись', new_user_registration_path   
   %nav.navigation
+    - if user_signed_in?
+      - if current_user.admin?
+        = link_to 'Додати політика', new_politic_path
+        = link_to 'Додати новину', new_news_path

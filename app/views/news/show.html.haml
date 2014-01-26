@@ -1,6 +1,7 @@
 - if user_signed_in?
   - if current_user.admin?
     = link_to 'Коригувати', edit_news_path(@news)
+    = link_to 'В пічку!', news_path(@news), method: :delete
 %h1  
   = @news.title
 = @news.content
