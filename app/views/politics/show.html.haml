@@ -17,8 +17,13 @@
       = @politic.post
     = flash[:notice]
     - if @voted
-      - (1...10) do |i|
-        = i
+      - rate = (@politic.rating / @politic.votes_counter).to_i
+      %span.star-rating-dis
+        - (1...11).each do |i|
+          - if i <= rate
+            %span.star-gold
+          - else
+            %span.star-grey
     -else
       %span.star-rating.active
         %span.star{ data: { :politic_id => @politic.id, :rate => 10} }
