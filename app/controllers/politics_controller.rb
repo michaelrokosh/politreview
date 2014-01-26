@@ -16,7 +16,12 @@ class PoliticsController < ApplicationController
   def show 
     @politic = Politic.find(params[:id])
     @politics = Politic.all
-    @voted = @politic.votes.where(user_id: current_user.id).present?
+    @feedbacks = @politic.feedbacks.order(rating: :desc)
+    if user_signed_in?
+      @voted = @politic.votes.where(user_id: current_user.id).present?
+    else
+      @voted = true
+    end
   end
 
   def index
