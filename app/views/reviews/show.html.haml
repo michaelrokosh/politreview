@@ -6,12 +6,30 @@
 = @review.content
 .comments
   %h3
-    Комментарии:
+    Коментарі:
   - @review.comments.each do |comment|
-    %h3
-      = comment.user.username
-      = request.location.country
-    = comment.content
+    .feedback
+      .feedback-header
+        .user
+          .username
+            = comment.user.username
+          - if request.location.country == 'Ukraine'
+            .flag.flag-ua
+          - elsif request.location.country == 'Russia'
+            .flag.flag-ru
+          - elsif request.location.country == 'Reserved'
+            .flag.flag-eu
+          - else
+            %span
+              = request.location.country
+          - if user_signed_in?
+            - if current_user.admin?
+              = link_to 'В пічку!', news_review_comment_path(@news, @review, comment), method: :delete
+        .date
+          %h4
+            = comment.created_at.to_s(:ru_datetime)
+      .feedback-content
+        = comment.content
 - if user_signed_in?
   = render 'comment'
 - else

@@ -15,6 +15,7 @@ class NewsController < ApplicationController
 
   def show
     @news = News.find_by_id(params[:id])
+    @reviews = @news.reviews.order('rating DESC')
   end
 
   def edit
