@@ -25,6 +25,7 @@
             
     .row
       .hot-news.col-md-8.col-xs-12
+        = flash[:notice]
         %h2 Гарячі новини 
         - unless @news.image_url == nil
           = image_tag(@news.image_url)
