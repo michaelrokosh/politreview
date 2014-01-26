@@ -17,6 +17,11 @@ class PoliticsController < ApplicationController
     @politic = Politic.find(params[:id])
     @politics = Politic.all
     @feedbacks = @politic.feedbacks.order(rating: :desc)
+    if @politic.votes_counter == 0.0
+      @average_rate = 0.0
+    else
+      @average_rate = (@politic.rating / @politic.votes_counter).to_i
+    end
     if user_signed_in?
       @voted = @politic.votes.where(user_id: current_user.id).present?
     else

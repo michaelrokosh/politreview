@@ -21,7 +21,11 @@
             %h6.feedbacks.fa.fa-comments-o
               = politic.feedbacks.count
             %h6.rating
-              = "#{politic.rating / politic.votes_counter}/10"       
+              - if politic.votes_counter == 0.0
+                - average_rate = 0.0
+              - else
+                - average_rate = (politic.rating / politic.votes_counter)
+              = "#{average_rate}/10"       
     .row
       .hot-news.col-md-8.col-xs-12
         %h2 Гарячі новини 

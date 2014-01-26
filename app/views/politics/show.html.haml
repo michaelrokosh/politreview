@@ -15,8 +15,6 @@
     %h3
       Діагноз:
       = @politic.post
-    - if @average_rate == nil
-      - @average_rate = 0.0
     - if @voted
       %span.star-rating-dis
         - (1...11).each do |i|
