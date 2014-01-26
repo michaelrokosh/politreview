@@ -15,12 +15,12 @@
     %h3
       Діагноз:
       = @politic.post
-    = flash[:notice]
+    - if @average_rate == nil
+      - @average_rate = 0.0
     - if @voted
-      - rate = (@politic.rating / @politic.votes_counter).to_i
       %span.star-rating-dis
         - (1...11).each do |i|
-          - if i <= rate
+          - if i <= @average_rate
             %span.star-gold
           - else
             %span.star-grey
@@ -37,7 +37,7 @@
         %span.star{ data: { :politic_id => @politic.id, :rate => 2} }
         %span.star{ data: { :politic_id => @politic.id, :rate => 1} }
     %span.average-rating  
-      = "#{@politic.rating / @politic.votes_counter}/10"
+      = "#{@average_rate}/10"
     .votes_counter
       = "Людей проголосувало: #{@politic.votes.count}"
 .row
