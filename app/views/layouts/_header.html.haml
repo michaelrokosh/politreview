@@ -1,13 +1,13 @@
 %header
   .logo
-    %h1
+    .brand
       =link_to 'PolitReview.com', root_path
     .user-nav
       - if user_signed_in?
         %ul
           %h4
             %li= link_to current_user.username, user_path(current_user), title: "Профіль"
-            %li= link_to ' Выход', destroy_user_session_path, method: :delete, class: "fa fa-sign-out", title: "Вихід"
+            %li= link_to ' Вихід', destroy_user_session_path, method: :delete, class: "fa fa-sign-out", title: "Вихід"
       - else
         %ul
           %h4

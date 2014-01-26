@@ -1,10 +1,10 @@
 @font-face {
-  font-family: 'badscript';
-  src:url('assets/fonts/badscript-regular-webfont.eot');
-  src:url('assets/fonts/badscript-regular-webfont.eot?#iefix') format('embedded-opentype'),
-    url('assets/fonts/badscript-regular-webfont.svg#icomoon') format('svg'),
-    url('assets/fonts/badscript-regular-webfont.woff') format('woff'),
-    url('assets/fonts/badscript-regular-webfont.ttf') format('truetype');
+  font-family: 'lobster';
+  src:font-url('lobster-webfont.eot');
+  src:font-url('lobster-webfont.eot?#iefix') format('embedded-opentype'),
+    font-url('lobster-webfont.svg#icomoon') format('svg'),
+    font-url('lobster-webfont.woff') format('woff'),
+    font-url('lobster-webfont.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -19,14 +19,32 @@ h1 {
   margin-top: 0px;
 }
 
+h1, h2 {
+  font-family: 'lobster';
+}
+
+a:hover {
+  text-decoration: none;
+}
+
 .logo {
   margin: 30px 0px;
   overflow: hidden;
+  .brand {
+    display: inline;
+    a {
+      font-family: 'lobster';
+      font-size: 50px;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
   h1 {
     margin: 0;
     display: inline;
     float: left;
-    font-family: 'badscript';
+    font-family: 'lobster';
   }
   .user-nav {
     float: right;
@@ -201,3 +219,7 @@ footer {
 .flag.flag-ua {background-position: -32px -11px}
 .flag.flag-us {background-position: 0 -22px}
 
+.politic-name {
+  font-size: 40px;
+  font-family: 'lobster'
+}

@@ -10,7 +10,7 @@
           .canvas
             = image_tag(@politic.photo_url)
   .col-md-8.col-xs-12
-    %h1
+    .politic-name
       = @politic.name 
     %h3
       Діагноз:
@@ -65,7 +65,7 @@
           .feedback-link
             = link_to 'Посилання на відгук', politic_path(@politic, anchor: feedback.id)
           .comment-link
-            = link_to "Обсуждение (#{feedback.comments.count})", politic_feedback_path(@politic, feedback)
+            = link_to "Обговорення (#{feedback.comments.count})", politic_feedback_path(@politic, feedback)
         - if user_signed_in?
           - if feedback.user.id == current_user.id
             .voted
@@ -96,7 +96,7 @@
             .rating
               = feedback.rating
 %h1
-  Написать відгук
+  Залишити відгук
 - if user_signed_in?
   = render 'feedback'
 - else
