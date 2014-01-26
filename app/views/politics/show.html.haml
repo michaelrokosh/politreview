@@ -15,17 +15,22 @@
     %h3
       Діагноз:
       = @politic.post
-    %span.star-rating.active
-      %span.star{ data: { :politic_id => @politic.id, :rate => 10} }
-      %span.star{ data: { :politic_id => @politic.id, :rate => 9} }
-      %span.star{ data: { :politic_id => @politic.id, :rate => 8} }
-      %span.star{ data: { :politic_id => @politic.id, :rate => 7} }
-      %span.star{ data: { :politic_id => @politic.id, :rate => 6} }
-      %span.star{ data: { :politic_id => @politic.id, :rate => 5} }
-      %span.star{ data: { :politic_id => @politic.id, :rate => 4} }
-      %span.star{ data: { :politic_id => @politic.id, :rate => 3} }
-      %span.star{ data: { :politic_id => @politic.id, :rate => 2} }
-      %span.star{ data: { :politic_id => @politic.id, :rate => 1} }
+    = flash[:notice]
+    - if @voted
+      - (1...10) do |i|
+        = i
+    -else
+      %span.star-rating.active
+        %span.star{ data: { :politic_id => @politic.id, :rate => 10} }
+        %span.star{ data: { :politic_id => @politic.id, :rate => 9} }
+        %span.star{ data: { :politic_id => @politic.id, :rate => 8} }
+        %span.star{ data: { :politic_id => @politic.id, :rate => 7} }
+        %span.star{ data: { :politic_id => @politic.id, :rate => 6} }
+        %span.star{ data: { :politic_id => @politic.id, :rate => 5} }
+        %span.star{ data: { :politic_id => @politic.id, :rate => 4} }
+        %span.star{ data: { :politic_id => @politic.id, :rate => 3} }
+        %span.star{ data: { :politic_id => @politic.id, :rate => 2} }
+        %span.star{ data: { :politic_id => @politic.id, :rate => 1} }
     %span.average-rating  
       = "#{@politic.rating / @politic.votes_counter}/10"
     .votes_counter

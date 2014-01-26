@@ -22,6 +22,11 @@ $(function() {
         url: '/politics/' + $button.attr('data-politic-id') + '/stars?rate=' + $button.attr('data-rate'),
         success: function() {
           $button.removeClass('active').addClass('inactive').html("<span>OK!</span>"); ; 
+          setTimeout(
+                  function() 
+                  {
+                     location.reload();
+                  }, 0001); 
         }
       })
     }

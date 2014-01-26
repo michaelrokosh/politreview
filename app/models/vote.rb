@@ -11,8 +11,14 @@ class Vote < ActiveRecord::Base
 		new_vote.good_vote = good_vote
 		voteable.rating += rate
 		voteable.votes_counter += 1.0
-		if new_vote.save
-			voteable.save
+		if new_vote.rate >= 1.0 && new_vote.rate <= 10.0
+			if new_vote.save
+				voteable.save
+				"Ваш голос враховано"
+			else
+				"Ви вже голосували"
+			end
+			"Помилка"
 		end
 	end
 
@@ -30,5 +36,5 @@ class Vote < ActiveRecord::Base
 	end
 	
 	validates :user_id,
-  			uniqueness: { scope: :voteable_id, message: "Вы уже голосовали" }
+  			uniqueness: { scope: :voteable_id, message: "Ви вже голосували" }
 end

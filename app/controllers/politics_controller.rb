@@ -16,6 +16,7 @@ class PoliticsController < ApplicationController
   def show 
     @politic = Politic.find(params[:id])
     @politics = Politic.all
+    @voted = @politic.votes.where(user_id: current_user.id).present?
   end
 
   def index
@@ -42,10 +43,10 @@ class PoliticsController < ApplicationController
   end
 
   def stars
-    @politic = Politic.find(params[:id])
-    @rate = params[:rate].to_f
-    Vote.record_star(current_user, @politic, @rate, 'Politic', true)
-    redirect_to :back
+    politic = Politic.find(params[:id])
+    rate = params[:rate].to_f
+    flash[:notice] = Vote.record_star(current_user, politic, rate, 'Politic', true)
+    redirect_to politic
   end 
 
   private
