@@ -1,5 +1,6 @@
+= content_for(:title, "Рецензія №#{@review.id} | politreview.com")
 %h1
-  Рецензия № 
+  Рецензія № 
   = @review.id
   на новость
   = link_to @news.title, news_path(@news)

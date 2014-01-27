@@ -1,12 +1,13 @@
 !!!
 %html
   %head
-    %title
-      = yield(:title)
+    %title PolitReview.com - оцінка політиків, їх діяльності, а також останніх подій в Україні
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
     %meta{content: "width=device-width, initial-scale=1, maximum-scale=1", name: "viewport", "user-scalable" => "no"}/
+    %meta{content: "politreview.com - це сайт, на якому можна залишати відгуки про політиків та рецензії на найгостріщі новини України", name: "description"}/
+    %meta{content: "Євромайдан, політика, політична ситуація, президент України, політична критика, відгуки про політиків", name: "keywords"}/
   %body.col-md-offset-2.col-sm-offset-2.col-xs-12.col-sm-8.col-md-8 
     = render 'layouts/header'
     
@@ -24,7 +25,9 @@
                 - average_rate = 0.0
               - else
                 - average_rate = (politic.rating / politic.votes_counter)
-              = "#{average_rate}/10"       
+              %span
+                = average_rate
+                = "/10"       
     .row
       .hot-news.col-md-8.col-xs-12
         .hot-news-header

@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140127205440) do
     t.string   "post"
     t.decimal  "rating",        default: 0.0
     t.decimal  "votes_counter", default: 0.0
+    t.string   "photo_url"
   end
 
   create_table "reviews", force: true do |t|
