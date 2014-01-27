@@ -30,9 +30,6 @@
         .hot-news-header
           .title
             = link_to @news.title, news_path(@news)
-        - unless @news.image_url == nil
-          .news-image
-            = image_tag(@news.image_url)
         .news-content
           = raw @news.content
       .recent-news.col-md-4.col-xs-12
