@@ -6,7 +6,7 @@
     .input-group
       %span.input-group-addon
         %i.fa.fa-user
-      = f.text_field :username, :placeholder => 'Имя пользователя', class: 'form-control'
+      = f.text_field :username, :placeholder => 'Нікнейм', class: 'form-control'
   %p
     .input-group
       %span.input-group-addon
@@ -21,5 +21,5 @@
     .input-group
       %span.input-group-addon
         %i.fa.fa-key
-      = f.password_field :password_confirmation, :placeholder => 'Подтверждение пароля', class: 'form-control'
-  %p= f.submit "Зарегистрироватся", class: 'btn btn-default'
+      = f.password_field :password_confirmation, :placeholder => 'Підтвердження паролю', class: 'form-control'
+  %p= f.submit "Зареєструватись", class: 'btn btn-default'
