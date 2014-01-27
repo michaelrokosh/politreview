@@ -28,13 +28,13 @@
     .row
       .hot-news.col-md-8.col-xs-12
         %h2 Гарячі новини 
+        %h2
+          = @news.title
         - unless @news.image_url == nil
           .news-image
             = image_tag(@news.image_url)
-        %h2
-          = @news.title
         .news-content
-          = @news.content
+          = raw @news.content
       .recent-news.col-md-4.col-xs-12
         %h2 Більше
         - @recent_news.each do |news|
