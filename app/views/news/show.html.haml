@@ -4,7 +4,7 @@
     = link_to 'В пічку!', news_path(@news), method: :delete
 %h1  
   = @news.title
-= @news.content
+= raw @news.content
 - @reviews.each do |review|
   %div{class: review.emo_type}
     %a{name: review.id}
