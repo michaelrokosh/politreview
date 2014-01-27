@@ -1,4 +1,4 @@
-= content_for(:title, "#{@news.name}. Відгуки | politreview.com")
+= content_for(:title, "#{@news.title}. Рецензії | politreview.com")
 - if user_signed_in?
   - if current_user.admin?
     = link_to 'Коригувати', edit_news_path(@news)

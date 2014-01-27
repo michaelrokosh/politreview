@@ -1,3 +1,4 @@
+= content_for(:title, "#{@politic.name}. Відгуки | politreview.com")
 - if user_signed_in?
   - if current_user.admin?
     = link_to 'Коригувати', edit_politic_path(@politic)
