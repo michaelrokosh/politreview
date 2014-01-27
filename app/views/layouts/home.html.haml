@@ -27,9 +27,9 @@
               = "#{average_rate}/10"       
     .row
       .hot-news.col-md-8.col-xs-12
-        %h2 Гарячі новини 
-        %h2
-          = @news.title
+        .hot-news-header
+          .title
+            = link_to @news.title, news_path(@news)
         - unless @news.image_url == nil
           .news-image
             = image_tag(@news.image_url)
