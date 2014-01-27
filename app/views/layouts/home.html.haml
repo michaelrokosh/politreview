@@ -37,8 +37,11 @@
         %h2 Більше
         - @recent_news.each do |news|
           .single-recent-news
-            %h5 
-              = news.created_at.to_s(:ru_datetime)
+            .date-counter
+              .created-at
+                = news.created_at.to_s(:ru_datetime)
+              .reviews-counter.fa.fa-comments-o
+                = news.reviews.count
             = link_to news.title, news_path(news)
           %hr
     = render 'layouts/footer'
