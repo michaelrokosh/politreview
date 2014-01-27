@@ -13,7 +13,7 @@ CKEDITOR.editorConfig = (config) ->
     '/',
     { name: 'styles',      items: [ 'Styles','Format','Font','FontSize' ] },
     { name: 'colors',      items: [ 'TextColor','BGColor' ] },
-    { name: 'insert',      items: [ 'Image','Table','HorizontalRule','SpecialChar' ] },
+    { name: 'insert',      items: [ 'Image','Table','HorizontalRule','SpecialChar', 'Iframe', 'Flash' ] },
   ]
   config.toolbar = 'Pure'
   true
