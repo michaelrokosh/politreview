@@ -11,9 +11,9 @@
       - else
         %ul
           %h4
-            %li= link_to "Ввійти через VK", user_omniauth_authorize_path(:vkontakte)
             %li= link_to 'Ввійти', new_user_session_path
-            %li= link_to 'Зареєстуватись', new_user_registration_path   
+            %li= link_to 'Зареєстуватись', new_user_registration_path
+            %li= link_to(image_tag('http://wiki.qip.ru/public/f/f6/%D0%98%D0%BA%D0%BE%D0%BD%D0%BA%D0%B0_vkontakte.png'), user_omniauth_authorize_path(:vkontakte))   
   %nav.navigation
     - if user_signed_in?
       - if current_user.admin?
