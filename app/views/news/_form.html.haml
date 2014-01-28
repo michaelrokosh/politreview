@@ -1,24 +1,11 @@
-- if user_signed_in?
-  = form_for @news do |f|
-    %p
-      = f.hidden_field :user_id, :value => current_user.id
-      %br
-      = f.text_field :title, class: 'form-control', placeholder: "Заголовок"
+= form_for @news do |f|
+  %p
+    = f.hidden_field :user_id, :value => current_user.id
+    %br
+    = f.text_field :title, class: 'form-control', placeholder: "Заголовок"
 
-    %p
-      = f.text_area :content, class: 'form-control ckeditor', rows: 10
+  %p
+    = f.text_area :content, class: 'form-control ckeditor', rows: 10
 
-    %p
-      = f.submit "Готово", class: 'btn btn-default'
-- else
-  = form_for @news do |f|
-    %p
-      = f.hidden_field :user_id, :value => User.where(username: 'Anonymous').id
-      %br
-      = f.text_field :title, class: 'form-control', placeholder: "Заголовок"
-
-    %p
-      = f.text_area :content, class: 'form-control ckeditor', rows: 10
-
-    %p
-      = f.submit "Готово", class: 'btn btn-default'
+  %p
+    = f.submit "Готово", class: 'btn btn-default'
