@@ -1,17 +1,34 @@
-= form_for ([@politic, @politic.feedbacks.build]) do |f|
-  %p
-    = f.hidden_field :politic_id
-    = f.hidden_field :user_id, :value => current_user.id
-    .radio
-      = f.radio_button :emo_type, "positive", id: "optionsRadios1"
-      = label_tag(:optionsRadios1, "Позитивний")
-    .radio
-      = f.radio_button :emo_type, "neutral", id: "optionsRadios2"
-      = label_tag(:optionsRadios2, "Нейтральний")
-    .radio
-      = f.radio_button :emo_type, "negative", id: "optionsRadios3"
-      = label_tag(:optionsRadios3, "Негативний")
-    = f.text_area :content, class: 'form-control', rows: 10
+- if user_signed_in?
+  = form_for ([@politic, @politic.feedbacks.build]) do |f|
+    %p
+      = f.hidden_field :politic_id
+      = f.hidden_field :user_id, :value => current_user.id
+      .radio
+        = f.radio_button :emo_type, "positive", id: "optionsRadios1"
+        = label_tag(:optionsRadios1, "Позитивний")
+      .radio
+        = f.radio_button :emo_type, "neutral", id: "optionsRadios2"
+        = label_tag(:optionsRadios2, "Нейтральний")
+      .radio
+        = f.radio_button :emo_type, "negative", id: "optionsRadios3"
+        = label_tag(:optionsRadios3, "Негативний")
+      = f.text_area :content, class: 'form-control', rows: 10
 
-  %p
-    = f.submit "Готово", class: 'btn btn-default'
+    %p
+      = f.submit "Готово", class: 'btn btn-default'
+- else
+  - user = User.where(:username => 'Anonymous')
+  = form_for ([@politic, @politic.feedbacks.build]) do |f|
+    %p
+      = f.hidden_field :politic_id
+      = f.hidden_field :user_id, :value => user.id
+      .radio
+        = f.radio_button :emo_type, "positive", id: "optionsRadios1"
+        = label_tag(:optionsRadios1, "Позитивний")
+      .radio
+        = f.radio_button :emo_type, "neutral", id: "optionsRadios2"
+        = label_tag(:optionsRadios2, "Нейтральний")
+      .radio
+        = f.radio_button :emo_type, "negative", id: "optionsRadios3"
+        = label_tag(:optionsRadios3, "Негативний")
+      = f.text_area :content, class: 'form-control', rows: 10
