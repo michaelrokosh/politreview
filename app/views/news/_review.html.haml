@@ -5,18 +5,20 @@
       = f.hidden_field :user_id, :value => current_user.id
       .radio
         = f.radio_button :emo_type, "positive", id: "optionsRadios1"
-        = label_tag(:optionsRadios1, "Позитивний")
+        = label_tag(:optionsRadios1, "Позитивна")
       .radio
         = f.radio_button :emo_type, "neutral", id: "optionsRadios2"
-        = label_tag(:optionsRadios2, "Нейтральний")
+        = label_tag(:optionsRadios2, "Нейтральна")
       .radio
         = f.radio_button :emo_type, "negative", id: "optionsRadios3"
-        = label_tag(:optionsRadios3, "Негативний")
+        = label_tag(:optionsRadios3, "Негативна")
       = f.text_area :content, class: 'form-control', rows: 10
 
     %p
       = f.submit "Готово", class: 'btn btn-default'
 - else
+  %h2
+    Режим анонімності
   = form_for ([@news, @news.reviews.build]) do |f|
     - @user = User.where(username: 'Anonymous').first
     %p
@@ -24,13 +26,13 @@
       = f.hidden_field :user_id, :value => @user.id
       .radio
         = f.radio_button :emo_type, "positive", id: "optionsRadios1"
-        = label_tag(:optionsRadios1, "Позитивний")
+        = label_tag(:optionsRadios1, "Позитивна")
       .radio
         = f.radio_button :emo_type, "neutral", id: "optionsRadios2"
-        = label_tag(:optionsRadios2, "Нейтральний")
+        = label_tag(:optionsRadios2, "Нейтральна")
       .radio
         = f.radio_button :emo_type, "negative", id: "optionsRadios3"
-        = label_tag(:optionsRadios3, "Негативний")
+        = label_tag(:optionsRadios3, "Негативна")
       = f.text_area :content, class: 'form-control', rows: 10
 
     %p

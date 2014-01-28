@@ -106,10 +106,4 @@
               = feedback.rating
 %h1
   Залишити відгук
-- if user_signed_in?
-  = render 'feedback'
-- else
-  Для написания відгуку необходимо здійснити вхід.
-  = link_to 'Ввійти', new_user_session_path
-  = link_to 'Зареєстуватись', new_user_registration_path
-  = link_to(image_tag('http://wiki.qip.ru/public/f/f6/%D0%98%D0%BA%D0%BE%D0%BD%D0%BA%D0%B0_vkontakte.png', class: 'original-size'), user_omniauth_authorize_path(:vkontakte)) 
+= render 'feedback'

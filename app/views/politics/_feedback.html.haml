@@ -17,6 +17,8 @@
     %p
       = f.submit "Готово", class: 'btn btn-default'
 - else
+  %h2
+    Режим анонімності
   - user = User.where(:username => 'Anonymous').first
   = form_for ([@politic, @politic.feedbacks.build]) do |f|
     %p
