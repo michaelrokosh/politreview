@@ -17,11 +17,11 @@
     %p
       = f.submit "Готово", class: 'btn btn-default'
 - else
-  - user = User.where(:username => 'Anonymous')
   = form_for ([@news, @news.reviews.build]) do |f|
+    - @user = User.where(username: 'Anonymous').first
     %p
       = f.hidden_field :news_id
-      = f.hidden_field :user_id, :value => user.id
+      = f.hidden_field :user_id, :value => @user.id
       .radio
         = f.radio_button :emo_type, "positive", id: "optionsRadios1"
         = label_tag(:optionsRadios1, "Позитивний")

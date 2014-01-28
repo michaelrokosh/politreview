@@ -17,7 +17,7 @@
     %p
       = f.submit "Готово", class: 'btn btn-default'
 - else
-  - user = User.where(:username => 'Anonymous')
+  - user = User.where(:username => 'Anonymous').first
   = form_for ([@politic, @politic.feedbacks.build]) do |f|
     %p
       = f.hidden_field :politic_id
