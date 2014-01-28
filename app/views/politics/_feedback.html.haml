@@ -34,3 +34,5 @@
         = f.radio_button :emo_type, "negative", id: "optionsRadios3"
         = label_tag(:optionsRadios3, "Негативний")
       = f.text_area :content, class: 'form-control', rows: 10
+    %p
+      = f.submit "Готово", class: 'btn btn-default'

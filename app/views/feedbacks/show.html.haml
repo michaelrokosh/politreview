@@ -1,4 +1,4 @@
-= content_for(:title, "Відгук №#{@feedback.id} | politreview.com")
+= content_for(:title, "Відгук №#{@feedback.id} | politfeedback.com")
 %h1
   Відгук № 
   = @feedback.id
@@ -9,12 +9,28 @@
   %h3
     Комментарии:
   - @feedback.comments.each do |comment|
-    %h3
-      = comment.user.username
-      = request.location.country
-    = comment.content
-- if user_signed_in?
-  = render 'comment'
-- else
-  Для оставления комментариев необходимо зарегистрироваться
+    .feedback
+      .feedback-header
+        .user
+          .username
+            = comment.user.username
+          - if request.location.country == 'Ukraine'
+            .flag.flag-ua
+          - elsif request.location.country == 'Russia'
+            .flag.flag-ru
+          - elsif request.location.country == 'Reserved'
+            .flag.flag-eu
+          - else
+            %span
+              = request.location.country
+          - if user_signed_in?
+            - if current_user.admin?
+              = link_to 'В пічку!', news_feedback_comment_path(@politic, @feedback, comment), method: :delete
+        .date
+          %h4
+            = comment.created_at.to_s(:ru_datetime)
+      .feedback-content
+        = comment.content
+= render 'comment'
+
 

@@ -1,9 +1,23 @@
-= form_for ([@politic, @feedback, @comment]) do |f|
-  %p
-    = f.hidden_field :commentable_id, :value => @feedback.id
-    = f.hidden_field :user_id, :value => current_user.id
-    = f.hidden_field :commentable_type, :value => 'Feedback'
-    = f.text_area :content, class: 'form-control', rows: 10
+- if user_signed_in?
+  = form_for ([@politic, @feedback, @comment]) do |f|
+    %p
+      = f.hidden_field :commentable_id, :value => @feedback.id
+      = f.hidden_field :user_id, :value => current_user.id
+      = f.hidden_field :commentable_type, :value => 'Feedback'
+      = f.text_area :content, class: 'form-control', rows: 10
 
-  %p
-    = f.submit "Готово", class: 'btn btn-default'
+    %p
+      = f.submit "Готово", class: 'btn btn-default'
+- else
+  %h2
+    Режим анонімності
+  = form_for ([@politic, @feedback, @comment]) do |f|
+    - user = User.where(:username => 'Anonymous').first
+    %p
+      = f.hidden_field :commentable_id, :value => @feedback.id
+      = f.hidden_field :user_id, :value => user.id
+      = f.hidden_field :commentable_type, :value => 'Feedback'
+      = f.text_area :content, class: 'form-control', rows: 10
+
+    %p
+      = f.submit "Готово", class: 'btn btn-default'
